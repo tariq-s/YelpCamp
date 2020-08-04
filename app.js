@@ -17,7 +17,14 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
-mongoose.connect("mongodb://localhost/yelp_camp_final");
+mongoose.connect("mongodb+srv://tariq-s:pass1234@cluster0-inktc.mongodb.net/yelpCamp?retryWrites=true&w=majority", {
+	useNewUrlParser: true,
+	useCreateIndex: true
+}).then(() => {
+	console.log("Connected to dB")
+}).catch(err => {
+	console.log("ERROR:", err.message)
+})
 
 
 app.use(require("express-session")({
